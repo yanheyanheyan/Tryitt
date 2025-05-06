@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>西红柿的旅程：从田间到餐桌</title>
+  <style>
+    body {
+      font-family: "微软雅黑", sans-serif;
+      margin: 20px;
+      background: #f3f7f0;
+    }
+    h1 {
+      text-align: center;
+      color: #4b7b42;
+    }
+    #product-journey {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .step {
+      width: 22%;
+      text-align: center;
+      background: #fff;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .step:hover {
+      transform: scale(1.05);
+    }
+    .step img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    #detail-box {
+      background: #ffffff;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    video, img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍅 西红柿的旅程：从田间到餐桌</h1>
+
+  <div id="product-journey">
+    <div class="step" onclick="showDetails(0)">
+      <img src="img/farm.jpg" alt="种植">
+      <p>1. 种植</p>
+    </div>
+    <div class="step" onclick="showDetails(1)">
+      <img src="img/harvest.jpg" alt="采摘">
+      <p>2. 采摘</p>
+    </div>
+    <div class="step" onclick="showDetails(2)">
+      <img src="img/transport.jpg" alt="运输">
+      <p>3. 运输</p>
+    </div>
+    <div class="step" onclick="showDetails(3)">
+      <img src="img/store.jpg" alt="销售">
+      <p>4. 销售</p>
+    </div>
+  </div>
+
+  <div id="detail-box">
+    <h2>点击上方任一步骤，了解详细旅程</h2>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        title: "种植阶段",
+        content: "在春天，农民在田地里播下西红柿种子，采用滴灌节水和轮作种植，提升土壤健康。",
+        media: "videos/farm.mp4"
+      },
+      {
+        title: "采摘阶段",
+        content: "成熟的西红柿由人工精心采摘，确保果实完整、不被损伤，随后装箱。",
+        media: "img/harvest-detail.jpg"
+      },
+      {
+        title: "运输阶段",
+        content: "使用冷链物流将西红柿运输至城市，减少腐损，提升新鲜度。",
+        media: "videos/transport.mp4"
+      },
+      {
+        title: "销售阶段",
+        content: "西红柿进入超市货架，消费者通过扫码可追溯产地和运输路径。",
+        media: "img/store-detail.jpg"
+      }
+    ];
+
+    function showDetails(index) {
+      const step = steps[index];
+      const mediaTag = step.media.endsWith(".mp4")
+        ? `<video src="${step.media}" controls></video>`
+        : `<img src="${step.media}">`;
+      document.getElementById("detail-box").innerHTML = `
+        <h2>${step.title}</h2>
+        <p>${step.content}</p>
+        ${mediaTag}
+      `;
+    }
+  </script>
+</body>
+</html>
